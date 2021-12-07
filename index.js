@@ -14,12 +14,13 @@ app.use(cors());
 app.post('/', async (req, res) => {
     try {
         sendEmail(req.body);
-        res.status(200).send("Email sent successfully.")
     }
     catch (err) {
         console.log(err);
         res.status(500).send("Email failed to send.")
     }
+
+    res.status(200).send("Email sent successfully.")
 });
 
 // port listener
