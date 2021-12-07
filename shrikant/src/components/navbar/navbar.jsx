@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import logo from "./assets/shrilogo.png";
 import "./navbar.css";
 
-const MyNavbar = () => {
+const MyNavbar = ({page, changePage}) => {
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -14,25 +14,25 @@ const MyNavbar = () => {
           <Navbar.Brand href="#home">
             <img className="navlogo" src={logo} alt="shrilogo" />
           </Navbar.Brand>
-          <Nav className="justify-content-end flex-grow-1 pe-3">
-            <Nav.Link href="home">Home</Nav.Link>
+          <Nav activeKey={page} className="justify-content-end flex-grow-1 pe-3">
+            <Nav.Link eventKey={page} href="home">Home</Nav.Link>
             <NavDropdown title="Insurance" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#life-insurance">
+              <NavDropdown.Item href="life-insurance">
                 Life Insurance
               </NavDropdown.Item>
-              <NavDropdown.Item href="#critical-illness">
+              <NavDropdown.Item href="critical-illness">
                 Critical Illness Insurance
               </NavDropdown.Item>
-              <NavDropdown.Item href="#disability-insurance">
+              <NavDropdown.Item href="disability-insurance">
                 Disability Insurance
               </NavDropdown.Item>
-              <NavDropdown.Item href="#mortgage-insurance">
+              <NavDropdown.Item href="mortgage-insurance">
                 Mortgage Insurance
               </NavDropdown.Item>
-              <NavDropdown.Item href="#druganddental-insurance">
+              <NavDropdown.Item href="druganddental-insurance">
                 Drug and Dental Insurance
               </NavDropdown.Item>
-              <NavDropdown.Item href="#nomedicallife-insurance">
+              <NavDropdown.Item href="nomedicallife-insurance">
                 No Medical Life Insurance
               </NavDropdown.Item>
             </NavDropdown>

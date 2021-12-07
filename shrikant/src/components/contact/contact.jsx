@@ -2,7 +2,7 @@ import React from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const contact = () => {
+const Contact = () => {
     return (
         <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -27,4 +27,4 @@ const contact = () => {
     )
 }
 
-export default contact
+export default Contact
