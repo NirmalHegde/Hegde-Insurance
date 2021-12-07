@@ -11,7 +11,7 @@ const MyNavbar = ({page, changePage}) => {
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="home">
             <img className="navlogo" src={logo} alt="shrilogo" />
           </Navbar.Brand>
           <Nav activeKey={page} className="justify-content-end flex-grow-1 pe-3">
