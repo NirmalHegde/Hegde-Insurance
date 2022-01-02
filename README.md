@@ -1,2 +1,2 @@
-# Shrikant-Insurance
-Website for Shrikant Hegde Insurance
+# Hegde-Insurance
+Website for Hegde Insurance
