@@ -30,6 +30,8 @@ app.post('/quote', async (req, res) => {
         console.log(err);
         res.status(500).send("Quote request failed to send.")
     }
+    
+    res.status(200).send("Quote request sent successfully.");
 })
 
 // port listener
