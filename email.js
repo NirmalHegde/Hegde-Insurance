@@ -33,7 +33,10 @@ async function sendEmail(email) {
 }
 
 async function sendQuote(email) {
-    email["body"] = `I would like to get a quote about ${email.quote}`;
+    email["body"] = `I would like to get a quote about ${email.quote}.`;
+    if (email.phone != null) {
+        email["body"] += ` My phone number is ${email.phone}`
+    }
     email["subject"] = `New Quote Request - ${email.quote}: ${email.name}`
     sendEmail(email);
 }
