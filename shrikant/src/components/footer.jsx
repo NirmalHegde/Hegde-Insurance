@@ -13,7 +13,7 @@ const Footer = () => {
         width: "100%"
       }}
     >
-      <span style={{ color: "white", paddingTop: "1%", paddingBottom: "1%" }}>&copy; Hegde Insurance</span>
+      <h5 style={{ color: "white", paddingTop: "0.7%", paddingBottom: "0.5%" }}>Protect Your Loved Ones</h5>
     </div>
   );
 };

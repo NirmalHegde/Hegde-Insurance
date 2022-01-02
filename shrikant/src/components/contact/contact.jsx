@@ -12,16 +12,42 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
+  const [validated, setValidated] = useState(false);
+
   const submitForm = (e) => {
-    console.log(email);
     e.preventDefault();
+
+    if (e.currentTarget.checkValidity() === true) {
+      const emailObj = {
+        subject: subject,
+        body: body,
+        name: name,
+        sender: email,
+      };
+
+      axios
+        .post("https://shrikant-insurance-backend.herokuapp.com/", emailObj)
+        .then((result) => {
+          console.log(result);
+          alert("Message has been submitted 🚀");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Something went wrong...");
+        });
+      setValidated(true);
+    } else {
+      e.stopPropagation();
+    }
   };
 
   return (
     <div className="root">
       <Container>
         <Row>
-          <h1 className="title">Let's Get in Contact!</h1>
+          <h1 className="title">
+            <b>Let's Get in Contact!</b>
+          </h1>
         </Row>
         <br />
         <Row>
@@ -34,10 +60,11 @@ const Contact = () => {
             </p>
           </Col>
           <Col>
-            <Form onSubmit={submitForm}>
+            <Form noValidate validated={validated} onSubmit={submitForm}>
               <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
@@ -47,6 +74,7 @@ const Contact = () => {
               <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   type="text"
@@ -56,6 +84,7 @@ const Contact = () => {
               <Form.Group className="mb-3" controlId="subject">
                 <Form.Label>Subject</Form.Label>
                 <Form.Control
+                  required
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   type="text"
@@ -65,6 +94,7 @@ const Contact = () => {
               <Form.Group className="mb-3" controlId="body">
                 <Form.Label>Your Message</Form.Label>
                 <Form.Control
+                  required
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                   as="textarea"

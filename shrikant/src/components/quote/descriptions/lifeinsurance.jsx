@@ -4,7 +4,7 @@ const LifeInsurance = () => {
   return (
     <div>
       <h3>
-        <b>Why do I Need Life Insurance?</b>
+        <b>Why do you Need Life Insurance?</b>
       </h3>
       <p>To protect your loved ones from financial burden when you die.</p>
       <h3>

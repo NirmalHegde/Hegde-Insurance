@@ -37,20 +37,22 @@ const Home = () => {
             <Carousel.Caption>
               <h1>Protect Your Loved Ones</h1>
               <p>
-                Get life insurance and prevent your family from bearing financial burdern when you are not around.
+                Get life insurance and prevent your family from bearing
+                financial burdern when you are not around.
               </p>
             </Carousel.Caption>
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/travel-insurance">
+          <Link to="/super-visa-\u0026-visitor-visa-insurance">
             <div style={{ filter: "brightness(50%)" }}>
               <img className="d-block w-100" src={travel} alt="travel" />
             </div>
             <Carousel.Caption>
-              <h1>Travelling Abroad?</h1>
+              <h1>Relatives Visiting?</h1>
               <p>
-                Learn about travel insurance and get protected from unexpected medical expenses.
+                Learn about super visa and visitor visa insurance to protect
+                them from unexpected medical expenses.
               </p>
             </Carousel.Caption>
           </Link>
@@ -63,18 +65,20 @@ const Home = () => {
             <Carousel.Caption>
               <h1>Save for Your Child's Education</h1>
               <p>
-                Learn options to save money for your child's future degree, tax free!
+                Learn options to save money for your child's future degree, tax
+                free!
               </p>
             </Carousel.Caption>
           </Link>
         </Carousel.Item>
       </Carousel>
       <br />
-      <br />
       <Container>
         <Row>
           <Col>
-            <h3 className="title">Services we Provide</h3>
+            <h3 className="title">
+              <b>Services we Provide</b>
+            </h3>
             <p>
               Hegde Insurance provides the best professional services to help
               you find the right investment or insurance opportunity for you.{" "}
@@ -82,13 +86,17 @@ const Home = () => {
               can provide the best advice for your needs. To get a free quote or
               to get in contact to learn more. click the buttons below.
             </p>
-            <Button size="md" variant="warning" type="submit">
-              Receive Free Quote
-            </Button>
+            <Link to="/life-insurance">
+              <Button size="md" variant="warning" type="submit">
+                Receive Free Quote
+              </Button>
+            </Link>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button size="md" variant="warning" type="submit">
-              Contact
-            </Button>
+            <Link to="/contact">
+              <Button size="md" variant="warning" type="submit">
+                Contact Me
+              </Button>
+            </Link>
           </Col>
           <Col>
             <div
@@ -107,6 +115,8 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
+      <br />
+      <br />
       <br />
       <br />
     </div>

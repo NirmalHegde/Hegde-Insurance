@@ -10,51 +10,80 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import { insuranceItems, investmentItems } from "../items";
-import placeholder from "./assets/placeholder.jpg";
 import "./quote.css";
 import LifeInsurance from "./descriptions/lifeinsurance";
 import CriticalIllnessInsurance from "./descriptions/criticalillnessinsurance";
 import TravelInsurance from "./descriptions/travelinsurance";
 import SuperVisaVisitorInsurance from "./descriptions/supervisavisitorinsurance";
+import RESP from "./descriptions/resp";
+import RRSP from "./descriptions/rrsp";
+import TFSA from "./descriptions/tfsa";
 
 const Quote = ({ quoteItem }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [quote, setQuote] = useState(quoteItem);
+  const [phone, setPhone] = useState("");
+  const [validated, setValidated] = useState(false);
+
   const submitForm = (e) => {
-    console.log(email);
     e.preventDefault();
+    if (e.currentTarget.checkValidity() === true) {
+      const quoteObj = {
+        name: name,
+        sender: email,
+        quote: quote,
+        phone: phone,
+      };
+
+      axios
+        .post(
+          "https://shrikant-insurance-backend.herokuapp.com/quote",
+          quoteObj
+        )
+        .then((result) => {
+          console.log(result);
+          alert("Quote request has been submitted 🚀");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Something went wrong...");
+        });
+      setValidated(true);
+    } else {
+      e.stopPropagation();
+    }
   };
 
   return (
     <div className="root">
       <Container>
         <Row>
-          <h1 className="title">Get a Quote!</h1>
+          <h1 className="title">
+            <b>Get a Quote!</b>
+          </h1>
         </Row>
         <br />
         <Row>
           <Col>
-            <img className="quotePic" src={placeholder} aria-label="placeholder" />
-            <br /><br />
-            {quote === "Life Insurance" && (
-              <LifeInsurance />
-            )}
+            {quote === "Life Insurance" && <LifeInsurance />}
             {quote === "Critical Illness Insurance" && (
               <CriticalIllnessInsurance />
             )}
-            {quote === "Travel Insurance" && (
-              <TravelInsurance />
-            )}
-            {quote === "Super Visa / Visitor Visa Insurance" && (
+            {quote === "Travel Insurance" && <TravelInsurance />}
+            {quote === "Super Visa \u0026 Visitor Visa Insurance" && (
               <SuperVisaVisitorInsurance />
             )}
+            {quote === "Registered Education Savings Plan (RESP)" && <RESP />}
+            {quote === "Registered Retirement Savings Plan (RRSP)" && <RRSP />}
+            {quote === "Tax-Free Savings Account (TFSA)" && <TFSA />}
           </Col>
           <Col>
-            <Form onSubmit={submitForm}>
+            <Form noValidate validated={validated} onSubmit={submitForm}>
               <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
@@ -64,16 +93,27 @@ const Quote = ({ quoteItem }) => {
               <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   placeholder="John Doe"
                 />
               </Form.Group>
+              <Form.Group className="mb-3" controlId="phone">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  type="text"
+                  placeholder="(905)-555-2345"
+                />
+              </Form.Group>
               <Form.Group className="mb-3" controlId="body">
                 <Form.Label>Quote</Form.Label>
                 <InputGroup className="mb-3">
                   <Form.Control
+                    required
                     value={quote}
                     onChange={(e) => setQuote(e.target.value)}
                     type="text"
@@ -100,6 +140,9 @@ const Quote = ({ quoteItem }) => {
           </Col>
         </Row>
       </Container>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

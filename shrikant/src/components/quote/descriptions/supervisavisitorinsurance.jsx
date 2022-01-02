@@ -4,11 +4,14 @@ const SuperVisaVisitorInsurance = () => {
   return (
     <div>
       <h3>
-        <b>What is Super Visa / Visitor Insurance?</b>
+        <b>What is Super Visa / Visitor Visa Insurance?</b>
       </h3>
-      <p>Super Visa / Visitor insurance is an emergency medical insurance during travel. It requires minimum CAD $100,000 coverage and one year commitment.</p>
+      <p>
+        Super Visa / Visitor insurance is an emergency medical insurance for
+        visitors to the country.
+      </p>
       <h3>
-        <b>Benefits of Super Visa / Visitor Insurance?</b>
+        <b>Benefits of Super Visa / Visitor Visa Insurance?</b>
       </h3>
       <ul>
         <li>Emergency Medical</li>
@@ -19,7 +22,7 @@ const SuperVisaVisitorInsurance = () => {
         <li>Expenses to return the body home</li>
       </ul>
       <h3>
-        <b>Steps for Getting Super Visa / Visitor Insurance</b>
+        <b>Steps for Getting Super Visa / Visitor Visa Insurance</b>
       </h3>
       <ol>
         <li>Sign the insurance contract</li>

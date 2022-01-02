@@ -1,11 +1,9 @@
 const insuranceItems = [
   "Life Insurance",
+  "Super Visa \u0026 Visitor Visa Insurance",
   "Critical Illness Insurance",
   "Disability Insurance",
-  "Drug and Dental Insurance",
-  "No Medical Life Insurance",
-  "Super Visa / Visitor Visa Insurance",
-  "Travel Insurance"
+  "Drug and Dental Insurance"
 ];
 
 const investmentItems = [
