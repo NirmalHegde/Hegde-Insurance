@@ -2,9 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import MyNavbar from "./components/navbar/navbar";
+import Home from "./components/home/home";
 import Contact from "./components/contact/contact";
 import About from "./components/about/about";
 import Quote from "./components/quote/quote";
+import Footer from "./components/footer";
 import { insuranceItems, investmentItems } from "./components/items";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,6 +21,7 @@ function App() {
     <div className="App">
       <MyNavbar page={page} changePage={changePage} />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
         {insuranceItems.map((item) => (
@@ -28,6 +31,7 @@ function App() {
           <Route path={item.toLowerCase().split(" ").slice(0, -1).join("-")} element={<Quote quoteItem={item}  />} />
         ))}
       </Routes>
+      <Footer />
     </div>
   );
 }

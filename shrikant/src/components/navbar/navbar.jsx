@@ -12,11 +12,11 @@ const MyNavbar = () => {
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="home">
+          <Navbar.Brand href="/">
             <img className="navlogo" src={logo} alt="shrilogo" />
           </Navbar.Brand>
           <Nav className="justify-content-end flex-grow-1 pe-3">
-            <Nav.Link href="home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Insurance" id="basic-nav-dropdown">
               {insuranceItems.map((item) => (
                 <NavDropdown.Item

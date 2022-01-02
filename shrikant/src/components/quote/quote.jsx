@@ -9,10 +9,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 
-import descriptions from "./descriptions/descriptions";
 import { insuranceItems, investmentItems } from "../items";
 import placeholder from "./assets/placeholder.jpg";
 import "./quote.css";
+import LifeInsurance from "./descriptions/lifeinsurance";
+import CriticalIllnessInsurance from "./descriptions/criticalillnessinsurance";
+import TravelInsurance from "./descriptions/travelinsurance";
+import SuperVisaVisitorInsurance from "./descriptions/supervisavisitorinsurance";
 
 const Quote = ({ quoteItem }) => {
   const [email, setEmail] = useState("");
@@ -34,7 +37,18 @@ const Quote = ({ quoteItem }) => {
           <Col>
             <img className="quotePic" src={placeholder} aria-label="placeholder" />
             <br /><br />
-            {descriptions[quoteItem]}
+            {quote === "Life Insurance" && (
+              <LifeInsurance />
+            )}
+            {quote === "Critical Illness Insurance" && (
+              <CriticalIllnessInsurance />
+            )}
+            {quote === "Travel Insurance" && (
+              <TravelInsurance />
+            )}
+            {quote === "Super Visa / Visitor Visa Insurance" && (
+              <SuperVisaVisitorInsurance />
+            )}
           </Col>
           <Col>
             <Form onSubmit={submitForm}>
