@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { sendEmail } = require("./email");
+const { sendEmail, sendQuote } = require("./email");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,8 +20,17 @@ app.post('/', async (req, res) => {
         res.status(500).send("Email failed to send.")
     }
 
-    res.status(200).send("Email sent successfully.")
+    res.status(200).send("Email sent successfully.");
 });
+
+app.post('/quote', async (req, res) => {
+    try {
+        sendQuote(req.body);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Quote request failed to send.")
+    }
+})
 
 // port listener
 app.listen(port, () => {

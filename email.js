@@ -15,14 +15,13 @@ async function sendEmail(email) {
         const info = await transporter.sendMail({
             from: process.env.USER,
             to: "shegde111@gmail.com",
-            cc: email.sender || "",
             subject: email.subject,
-            html:  `
+            html: `
                 <div>
                     <p>${email.body}</p>
                     <br />
                     <p>Sincerely,</p>
-                    <p>${email.name}</p>
+                    <p>${email.name} (${email.sender})</p>
                 </div>
             `
         });
@@ -33,4 +32,9 @@ async function sendEmail(email) {
     }
 }
 
-module.exports = { sendEmail };
+async function sendQuote(email) {
+    email["body"] = `I would like to get a quote about ${email.quote}`;
+    sendEmail(email);
+}
+
+module.exports = { sendEmail, sendQuote };
