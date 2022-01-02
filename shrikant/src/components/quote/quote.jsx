@@ -18,6 +18,8 @@ import SuperVisaVisitorInsurance from "./descriptions/supervisavisitorinsurance"
 import RESP from "./descriptions/resp";
 import RRSP from "./descriptions/rrsp";
 import TFSA from "./descriptions/tfsa";
+import DisabilityInsurance from "./descriptions/disabilityinsurance";
+import DrugDentalInsurance from "./descriptions/drugdentalinsurance";
 
 const Quote = ({ quoteItem }) => {
   const [email, setEmail] = useState("");
@@ -77,6 +79,8 @@ const Quote = ({ quoteItem }) => {
             {quote === "Registered Education Savings Plan (RESP)" && <RESP />}
             {quote === "Registered Retirement Savings Plan (RRSP)" && <RRSP />}
             {quote === "Tax-Free Savings Account (TFSA)" && <TFSA />}
+            {quote === "Disability Insurance" && <DisabilityInsurance />}
+            {quote === "Drug and Dental Insurance" && <DrugDentalInsurance />}
           </Col>
           <Col>
             <Form noValidate validated={validated} onSubmit={submitForm}>
