@@ -5,13 +5,19 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./contact.css";
+import InputGroup from "react-bootstrap/InputGroup";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
-const Contact = () => {
+import descriptions from "./descriptions/descriptions";
+import { insuranceItems, investmentItems } from "../items";
+import placeholder from "./assets/placeholder.jpg";
+import "./quote.css";
+
+const Quote = ({ quoteItem }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [subject, setSubject] = useState("");
-  const [body, setBody] = useState("");
+  const [quote, setQuote] = useState(quoteItem);
   const submitForm = (e) => {
     console.log(email);
     e.preventDefault();
@@ -21,17 +27,14 @@ const Contact = () => {
     <div className="root">
       <Container>
         <Row>
-          <h1 className="title">Let's Get in Contact!</h1>
+          <h1 className="title">Get a Quote!</h1>
         </Row>
         <br />
         <Row>
           <Col>
-            <p>
-              <b>Call:</b> (647)-904-2587
-            </p>
-            <p>
-              <b>Email:</b> shegde111@gmail.com
-            </p>
+            <img className="quotePic" src={placeholder} aria-label="placeholder" />
+            <br /><br />
+            {descriptions[quoteItem]}
           </Col>
           <Col>
             <Form onSubmit={submitForm}>
@@ -53,27 +56,31 @@ const Contact = () => {
                   placeholder="John Doe"
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="subject">
-                <Form.Label>Subject</Form.Label>
-                <Form.Control
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  type="text"
-                  placeholder="Life Insurance"
-                />
-              </Form.Group>
               <Form.Group className="mb-3" controlId="body">
-                <Form.Label>Your Message</Form.Label>
-                <Form.Control
-                  value={body}
-                  onChange={(e) => setBody(e.target.value)}
-                  as="textarea"
-                  rows={4}
-                  placeholder="Let's do business!"
-                />
+                <Form.Label>Quote</Form.Label>
+                <InputGroup className="mb-3">
+                  <Form.Control
+                    value={quote}
+                    onChange={(e) => setQuote(e.target.value)}
+                    type="text"
+                  />
+                  <DropdownButton
+                    variant="outline-secondary"
+                    id="input-group-dropdown-1"
+                    onSelect={(key) => setQuote(key)}
+                  >
+                    {insuranceItems.map((item) => (
+                      <Dropdown.Item eventKey={item}>{item}</Dropdown.Item>
+                    ))}
+                    <Dropdown.Divider />
+                    {investmentItems.map((item) => (
+                      <Dropdown.Item eventKey={item}>{item}</Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </InputGroup>
               </Form.Group>
               <Button size="lg" variant="warning" type="submit">
-                Send Message
+                Receive Quote
               </Button>
             </Form>
           </Col>
@@ -83,4 +90,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Quote;
