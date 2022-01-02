@@ -34,6 +34,7 @@ async function sendEmail(email) {
 
 async function sendQuote(email) {
     email["body"] = `I would like to get a quote about ${email.quote}`;
+    email["subject"] = `New Quote Request - ${email.quote}: ${email.name}`
     sendEmail(email);
 }
 
