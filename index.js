@@ -13,21 +13,25 @@ app.use(cors());
 // post email
 app.post('/', async (req, res) => {
     try {
-        await sendEmail(req.body);
-        res.status(200).send("Email sent successfully.");
+        sendEmail(req.body);
     }
     catch (err) {
-        res.status(500).send(`Email failed to send. error = ${err}`)
+        console.log(err);
+        res.status(500).send("Email failed to send.")
     }
+
+    res.status(200).send("Email sent successfully.");
 });
 
 app.post('/quote', async (req, res) => {
     try {
-        await sendQuote(req.body);
-        res.status(200).send("Quote request sent successfully.");
+        sendQuote(req.body);
     } catch (err) {
-        res.status(500).send(`Quote request failed to send. error = ${err}`)
+        console.log(err);
+        res.status(500).send("Quote request failed to send.")
     }
+    
+    res.status(200).send("Quote request sent successfully.");
 })
 
 // port listener
